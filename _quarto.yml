@@ -10,16 +10,16 @@ website:
     left:
       - text: "Главная"
         href: index.qmd
-      - text: "Шаг 1: Извлечение текста"
+      - text: "Шаг 1 -2 : Работа с текстом"
         href: step1_ocr.qmd
-      - text: "Шаги 2–4: Анализ"
+      - text: "Шаг 3–4: Анализ"
         href: step2-4_analysis.qmd
       - text: "Выводы и о проекте"
         href: about.qmd
 
 format:
   html:
-    theme: darkly
+    theme: minty
     toc: true
     toc-depth: 3
     code-fold: true

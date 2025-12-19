@@ -42,11 +42,9 @@ format: html
 
 ![Топ-30 лемм](results/top30_lemmas.png){width=100%}
 
-![Топ-20 коллокаций](results/top20_collocations_bar.png){width=95% fig-align="center"}
+![](results/top20_meaningful_collocations_bar.png){width=100% fig-align="center"}
 
-![Сеть коллокаций (топ-30)](results/collocations_network.png){width=100% fig-align="center"}
-
-
-**Интерпретация:** Доминируют темы смерти, упадка, сверхъестественного. Коллокации прямо отсылают к названиям рассказов ("red death", "house usher", "black cat").
+![](results/meaningful_collocations_network.png){width=100% fig-align="center"}
+**Интерпретация:** доминируют темы смерти, упадка, сверхъестественного. Коллокации прямо отсылают к названиям рассказов ("red death", "house usher", "black cat").
 
 → Используйте меню сверху для детального просмотра каждого шага.

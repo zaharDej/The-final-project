@@ -1,5 +1,5 @@
 ---
-title: "Шаг 1: Извлечение текста из PDF"
+title: "Шаг 1-2: Извлечение текста из PDF"
 format: html
 ---
 
@@ -9,13 +9,94 @@ format: html
 Папка: `source_docs/`
 
 **Инструменты:** `pdftools` для извлечения текста, `magick` для предобработки изображений (улучшение контраста, удаление перекоса).
+```r
+library(pdftools)  
+library(magick)    
+
+source_dir <- "Files/source_docs/"
+raw_dir <- "Files/raw_text/"
+examples_dir <- "results/ocr_examples/"
+
+dir.create(raw_dir, showWarnings = FALSE)
+dir.create("Files/results", showWarnings = FALSE)
+dir.create(examples_dir, showWarnings = FALSE)
+
+pdf_files <- list.files(source_dir, pattern = ".pdf$", full.names = TRUE, ignore.case = TRUE)
+
+cat("Найдено файлов:", length(pdf_files), "\n\n")
+
+for (pdf_path in pdf_files) {
+  name <- tools::file_path_sans_ext(basename(pdf_path))
+  cat("Обрабатываю:", name, ".pdf\n")
+  
+  # Извлекаем текст напрямую
+  pages_text <- pdf_text(pdf_path)
+  full_text <- paste(pages_text, collapse = "\n")
+  
+  # Сохраняем сырой текст
+  writeLines(full_text, file.path(raw_dir, paste0(name, "_raw.txt")))
+  cat("  Сохранён _raw.txt\n")
+
+```
+
+
+Пример сырого текста<br>
+![Пример сырого текста](results/Сырой текст.png){width=50% fig-align="center"}<br>
 
 Пример предобработки первой страницы (The Fall of the House of Usher):
 ![Пример](THE FALL OF THE HOUSE OF USHER_1.png){width=50% fig-align="center"}<br>
 
-## Результат шага 1
+# Шаг 2: Очистка текста регулярными выражениями
+
+После извлечения текст содержал артефакты форматирования PDF (лишние переносы, тире, номера страниц). Очистка проводилась с помощью пакета `stringr`.
+
+**Задачи очистки:**
+
+- Исправление типичных ошибок (например, "rn" → "m", одинокая "l" → "I")
+- Приведение к нижнему регистру
+- Удаление пунктуации, цифр и слишком коротких слов
+- Нормализация пробелов<br>
+**Код**
+```r
+library(stringr)
+
+raw_dir <- "Files/raw_text/"
+clean_dir <- "Files/clean_text/"
+
+dir.create(clean_dir, showWarnings = FALSE)
+
+raw_files <- list.files(raw_dir, pattern = "_raw.txt$", full.names = TRUE)
+
+cat("Найдено сырых текстов:", length(raw_files), "\n\n")
+
+for (file in raw_files) {
+  name <- tools::file_path_sans_ext(basename(file))
+  cat("Очищаю:", name, "\n")
+  
+  text <- readLines(file, encoding = "UTF-8")
+  text <- paste(text, collapse = "\n")
+  
+  clean_text <- text |>
+    str_to_lower() |>                                  
+    str_replace_all("[^a-z\\s]", " ") |>               
+    str_replace_all("-\\s+", "") |>                 
+    str_replace_all("\\b\\w{1,2}\\b", " ")|>          
+    str_replace_all("\\s+", " ") |>        
+    str_trim()
+  
+  writeLines(clean_text, file.path(clean_dir, paste0(name, "_clean.txt")))
+  cat("Сохранён _clean.txt\n\n")
+}
+
+cat("Готово\n")
+```
+Пример очищенного текста<br>
+![Пример очищенного](results/очищенный.png){width=50% fig-align="center"}<br>
+
+## Результат шага 1 - 2
 
 - Получено **15 файлов** с сырым извлечённым текстом.
 - Папка с результатами: `raw_text/`
 - Общий объём корпуса после очистки: **~293 тыс. символов**.
 - Демонстрация предобработки изображений показывает, как можно работать с полностью отсканированными источниками (если бы текстовый слой в PDF отсутствовал).
+- Произведена очистка 

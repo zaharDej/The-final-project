@@ -36,10 +36,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dc2b8fd72d19ecffa98b62a2f1a51220.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6821dd1e756ba0763dff83467e3d9aae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,11 +94,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./step1_ocr.html"> 
-<span class="menu-text">Шаг 1: Извлечение текста</span></a>
+<span class="menu-text">Шаг 1 -2 : Работа с текстом</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./poe_analysis.html"> 
-<span class="menu-text">Шаги 2–4: Анализ</span></a>
+    <a class="nav-link" href="./step2-4_analysis.html"> 
+<span class="menu-text">Шаг 3–4: Анализ</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./about.html" aria-current="page"> 
@@ -154,13 +154,13 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><strong>Доминирующие темы:</strong> смерть (<em>death</em>), дом (<em>house</em>), время (<em>time</em>), глаз (<em>eye</em>), сердце (<em>heart</em>), страх (<em>fear</em>), тьма (<em>dark</em>). Эти леммы отражают готическую атмосферу упадка, безумия и сверхъестественного.</li>
 <li><strong>Значимые коллокации:</strong> “red death”, “house usher”, “black cat”, “tell tale”, “fall house” — прямые отсылки к названиям и центральным образам произведений.</li>
-<li><strong>Общая картина:</strong> лексика насыщена словами с негативной коннотацией, что создаёт ощущение неизбежности и ужаса — фирменный стиль По.</li>
+<li><strong>Общая картина:</strong> в тексте встречается много словоформ с негативной коннотацией. Пейоративы, вполне типичные для готической прозы, усиливают саспенс и сюжетное напряжение, ознаменующее собой триумф безысходности – тематически характерный для По.</li>
 </ul>
 <p>Анализ подтверждает, что По мастерски использует повторяющиеся мотивы для построения напряжения.</p>
 <div style="text-align: center; margin: 40px 0;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="results/collocations_network.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="results/meaningful_collocations_network.png" class="img-fluid figure-img" style="width:90.0%"></p>
 <figcaption>Финальная сеть коллокаций — визуализация ключевых связей</figcaption>
 </figure>
 </div>
@@ -206,8 +206,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="заключение" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Заключение</h1>
-<p>Работа с текстами Эдгара По показала, насколько мощными могут быть простые методы цифрового анализа для выявления стилистических особенностей автора. Полученные результаты не только соответствуют литературным исследованиям творчества По, но и демонстрируют практическую ценность инструментов обработки естественного языка.</p>
-<p>Спасибо за интересный курс и возможность применить знания на классике мировой литературы!</p>
+<p>Работа с текстами Эдгара По показала, что количественные характеристики для эмпирического материала могут быть легко выделены при помощи простых методов цифрового анализа с целью выявления особенностей идиостиля писателя или поэта. Полученные результаты не только соответствуют канону литературных исследований творчества По, но и демонстрируют практическую ценность инструментов обработки естественного языка.</p>
+<p>Спасибо за интересный курс и возможность применить знания на примере корпуса текстов мировой художественной прозы!</p>
 <blockquote class="blockquote">
 <p>“The boundaries which divide Life from Death are at best shadowy and vague. Who shall say where the one ends, and where the other begins?”<br>
 — Edgar Allan Poe, <em>The Premature Burial</em></p>
@@ -215,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
 <div style="text-align: center; margin: 40px 0;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="results/top30_lemmas.png" class="img-fluid figure-img" style="width:85.0%"></p>
+<p><img src="results/top20_meaningful_collocations_bar.png" class="img-fluid figure-img" style="width:85.0%"></p>
 <figcaption>Топ-30 лемм — лексический портрет корпуса</figcaption>
 </figure>
 </div>

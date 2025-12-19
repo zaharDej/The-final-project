@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Шаг 1: Извлечение текста из PDF – Анализ корпуса рассказов Эдгара Аллана По</title>
+<title>Шаг 1-2: Извлечение текста из PDF – Анализ корпуса рассказов Эдгара Аллана По</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -36,10 +71,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dc2b8fd72d19ecffa98b62a2f1a51220.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6821dd1e756ba0763dff83467e3d9aae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -97,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Шаг 1: Извлечение текста</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./poe_analysis.html"> 
+    <a class="nav-link" href="./step2-4_analysis.html"> 
 <span class="menu-text">Шаги 2–4: Анализ</span></a>
   </li>  
   <li class="nav-item">
@@ -120,9 +155,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#шаг-1-сбор-корпуса-и-извлечение-текста" id="toc-шаг-1-сбор-корпуса-и-извлечение-текста" class="nav-link active" data-scroll-target="#шаг-1-сбор-корпуса-и-извлечение-текста"><span class="header-section-number">1</span> Шаг 1: Сбор корпуса и извлечение текста</a>
+  <li><a href="#шаг-1-сбор-корпуса-и-извлечение-текста" id="toc-шаг-1-сбор-корпуса-и-извлечение-текста" class="nav-link active" data-scroll-target="#шаг-1-сбор-корпуса-и-извлечение-текста"><span class="header-section-number">1</span> Шаг 1: Сбор корпуса и извлечение текста</a></li>
+  <li><a href="#шаг-2-очистка-текста-регулярными-выражениями" id="toc-шаг-2-очистка-текста-регулярными-выражениями" class="nav-link" data-scroll-target="#шаг-2-очистка-текста-регулярными-выражениями"><span class="header-section-number">2</span> Шаг 2: Очистка текста регулярными выражениями</a>
   <ul class="collapse">
-  <li><a href="#результат-шага-1" id="toc-результат-шага-1" class="nav-link" data-scroll-target="#результат-шага-1"><span class="header-section-number">1.1</span> Результат шага 1</a></li>
+  <li><a href="#результат-шага-1---2" id="toc-результат-шага-1---2" class="nav-link" data-scroll-target="#результат-шага-1---2"><span class="header-section-number">2.1</span> Результат шага 1 - 2</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -132,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Шаг 1: Извлечение текста из PDF</h1>
+<h1 class="title">Шаг 1-2: Извлечение текста из PDF</h1>
 </div>
 
 
@@ -154,14 +190,85 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Источник корпуса:</strong> 15 PDF-файлов рассказов Эдгара По.<br>
 Папка: <code>source_docs/</code></p>
 <p><strong>Инструменты:</strong> <code>pdftools</code> для извлечения текста, <code>magick</code> для предобработки изображений (улучшение контраста, удаление перекоса).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)  </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)    </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>source_dir <span class="ot">&lt;-</span> <span class="st">"Files/source_docs/"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>raw_dir <span class="ot">&lt;-</span> <span class="st">"Files/raw_text/"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>examples_dir <span class="ot">&lt;-</span> <span class="st">"results/ocr_examples/"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(raw_dir, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"Files/results"</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(examples_dir, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pdf_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(source_dir, <span class="at">pattern =</span> <span class="st">".pdf$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Найдено файлов:"</span>, <span class="fu">length</span>(pdf_files), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (pdf_path <span class="cf">in</span> pdf_files) {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(pdf_path))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Обрабатываю:"</span>, name, <span class="st">".pdf</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Извлекаем текст напрямую</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  pages_text <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(pdf_path)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  full_text <span class="ot">&lt;-</span> <span class="fu">paste</span>(pages_text, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Сохраняем сырой текст</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">writeLines</span>(full_text, <span class="fu">file.path</span>(raw_dir, <span class="fu">paste0</span>(name, <span class="st">"_raw.txt"</span>)))</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"  Сохранён _raw.txt</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Пример сырого текста<br> <img src="results/Сырой текст.png" class="img-fluid quarto-figure quarto-figure-center" style="width:50.0%" alt="Пример сырого текста"><br></p>
 <p>Пример предобработки первой страницы (The Fall of the House of Usher): <img src="THE FALL OF THE HOUSE OF USHER_1.png" class="img-fluid quarto-figure quarto-figure-center" style="width:50.0%" alt="Пример"><br></p>
-<section id="результат-шага-1" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="результат-шага-1"><span class="header-section-number">1.1</span> Результат шага 1</h2>
+</section>
+<section id="шаг-2-очистка-текста-регулярными-выражениями" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Шаг 2: Очистка текста регулярными выражениями</h1>
+<p>После извлечения текст содержал артефакты форматирования PDF (лишние переносы, тире, номера страниц). Очистка проводилась с помощью пакета <code>stringr</code>.</p>
+<p><strong>Задачи очистки:</strong></p>
+<ul>
+<li>Исправление типичных ошибок (например, “rn” → “m”, одинокая “l” → “I”)</li>
+<li>Приведение к нижнему регистру</li>
+<li>Удаление пунктуации, цифр и слишком коротких слов</li>
+<li>Нормализация пробелов<br> <strong>Код</strong></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>raw_dir <span class="ot">&lt;-</span> <span class="st">"Files/raw_text/"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>clean_dir <span class="ot">&lt;-</span> <span class="st">"Files/clean_text/"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(clean_dir, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>raw_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(raw_dir, <span class="at">pattern =</span> <span class="st">"_raw.txt$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Найдено сырых текстов:"</span>, <span class="fu">length</span>(raw_files), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (file <span class="cf">in</span> raw_files) {</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  name <span class="ot">&lt;-</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(file))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Очищаю:"</span>, name, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  text <span class="ot">&lt;-</span> <span class="fu">readLines</span>(file, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  text <span class="ot">&lt;-</span> <span class="fu">paste</span>(text, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  clean_text <span class="ot">&lt;-</span> text <span class="sc">|&gt;</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_to_lower</span>() <span class="sc">|&gt;</span>                                  </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"[^a-z</span><span class="sc">\\</span><span class="st">s]"</span>, <span class="st">" "</span>) <span class="sc">|&gt;</span>               </span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"-</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">""</span>) <span class="sc">|&gt;</span>                 </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">b</span><span class="sc">\\</span><span class="st">w{1,2}</span><span class="sc">\\</span><span class="st">b"</span>, <span class="st">" "</span>)<span class="sc">|&gt;</span>          </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>) <span class="sc">|&gt;</span>        </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_trim</span>()</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">writeLines</span>(clean_text, <span class="fu">file.path</span>(clean_dir, <span class="fu">paste0</span>(name, <span class="st">"_clean.txt"</span>)))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Сохранён _clean.txt</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Готово</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Пример очищенного текста<br> <img src="results/очищенный.png" class="img-fluid quarto-figure quarto-figure-center" style="width:50.0%" alt="Пример очищенного"><br></p>
+<section id="результат-шага-1---2" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="результат-шага-1---2"><span class="header-section-number">2.1</span> Результат шага 1 - 2</h2>
 <ul>
 <li>Получено <strong>15 файлов</strong> с сырым извлечённым текстом.</li>
 <li>Папка с результатами: <code>raw_text/</code></li>
 <li>Общий объём корпуса после очистки: <strong>~293 тыс. символов</strong>.</li>
 <li>Демонстрация предобработки изображений показывает, как можно работать с полностью отсканированными источниками (если бы текстовый слой в PDF отсутствовал).</li>
+<li>Произведена очистка</li>
 </ul>
 
 
