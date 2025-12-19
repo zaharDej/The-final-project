@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Анализ корпуса рассказов Эдгара Аллана По"
+  navbar:
+    background: dark
+    search: true
+    left:
+      - text: "Главная"
+        href: index.qmd
+      - text: "Шаг 1: Извлечение текста"
+        href: step1_ocr.qmd
+      - text: "Шаги 2–4: Анализ"
+        href: step2-4_analysis.qmd
+      - text: "Выводы и о проекте"
+        href: about.qmd
+
+format:
+  html:
+    theme: darkly
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-summary: "Показать код"
+    number-sections: true
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+    fontsize: 1.1em

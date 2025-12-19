@@ -1,0 +1,52 @@
+---
+title: "Главная"
+format: html
+---
+
+# Итоговый проект: Вариант 1  
+**Комплексный анализ корпуса с визуализацией**
+
+Автор: Дей Захар Дмитриевич<br>
+
+
+![Эдгар Аллан По](results/Edgar_Allan_Poe_(1809_-_1849).jpg){width=70%}
+
+
+> “All that we see or seem is but a dream within a dream.”  
+> — Edgar Allan Poe
+
+Корпус состоит из **15 рассказов** Эдгара Аллана По (английский язык):  
+*The Fall of the House of Usher*<br>
+*The Black Cat*<br>
+*The Masque of the Red Death*<br>
+*The Cask of Amontillado*<br>
+*The Pit and the Pendulum*<br>
+*The Purloined Letter*<br>
+*The Facts in the Case of M. Valdemar*<br>
+*The Premature Burial*<br>
+*The Assignation*<br>
+*Mesmeric Revelation*<br>
+*The Imp of the Perverse*<br>
+*The Island of the Fay*<br>
+*Silence—A Fable*<br>
+*The Thousand-and-Second Tale of Scheherazade*<br>
+*Von Kempelen and His Discovery*<br>
+
+### Что сделано:
+1. Извлечение текста из PDF (`pdftools` + предобработка изображений `magick`)
+2. Очистка текста регулярными выражениями
+3. Лемматизация и частотный словарь (`udpipe`)
+4. Поиск коллокаций (`quanteda`) и визуализация (`ggplot2`, `ggraph`)
+
+### Ключевые результаты
+
+![Топ-30 лемм](results/top30_lemmas.png){width=100%}
+
+![Топ-20 коллокаций](results/top20_collocations_bar.png){width=95% fig-align="center"}
+
+![Сеть коллокаций (топ-30)](results/collocations_network.png){width=100% fig-align="center"}
+
+
+**Интерпретация:** Доминируют темы смерти, упадка, сверхъестественного. Коллокации прямо отсылают к названиям рассказов ("red death", "house usher", "black cat").
+
+→ Используйте меню сверху для детального просмотра каждого шага.
